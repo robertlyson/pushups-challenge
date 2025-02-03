@@ -2,6 +2,8 @@
 
 A simple web application that helps you track your daily push-up challenge. The number of push-ups you need to do each day corresponds to the day of the year (e.g., on day 100, you do 100 push-ups).
 
+🌐 **[Live Demo](https://robertlyson.github.io/pushups-challenge/)**
+
 ## Features
 
 - 📅 Automatically calculates your daily push-up target based on the current day of the year
@@ -26,5 +28,7 @@ The activity chart shows your daily progress with darker colors representing mor
 1. Clone this repository
 2. Open `index.html` in your web browser
 3. Start your push-up challenge!
+
+Or simply visit [https://robertlyson.github.io/pushups-challenge/](https://robertlyson.github.io/pushups-challenge/) to use the web version.
 
 ## Project Structure
