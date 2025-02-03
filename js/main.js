@@ -111,6 +111,93 @@ function updateFooterYear() {
   }
 }
 
+// Confetti animation function
+function triggerConfetti() {
+  const count = 200;
+  const defaults = {
+    origin: { y: 0.7 },
+    zIndex: 1000,
+  };
+
+  function fire(particleRatio, opts) {
+    confetti({
+      ...defaults,
+      ...opts,
+      particleCount: Math.floor(count * particleRatio),
+    });
+  }
+
+  fire(0.25, {
+    spread: 26,
+    startVelocity: 55,
+  });
+
+  fire(0.2, {
+    spread: 60,
+  });
+
+  fire(0.35, {
+    spread: 100,
+    decay: 0.91,
+    scalar: 0.8,
+  });
+
+  fire(0.1, {
+    spread: 120,
+    startVelocity: 25,
+    decay: 0.92,
+    scalar: 1.2,
+  });
+
+  fire(0.1, {
+    spread: 120,
+    startVelocity: 45,
+  });
+}
+
+// Handle done button click
+function handleDoneButtonClick() {
+  const button = document.getElementById("doneButton");
+  const today = new Date();
+
+  // Get the last completion date from localStorage
+  const lastCompletionDate = localStorage.getItem("lastCompletionDate");
+  const today_str = today.toDateString();
+
+  if (lastCompletionDate === today_str) {
+    return; // Already completed today
+  }
+
+  // Trigger confetti
+  triggerConfetti();
+
+  // Save completion date
+  localStorage.setItem("lastCompletionDate", today_str);
+
+  // Disable button for today
+  button.classList.add("disabled");
+  button.textContent = "Completed Today! 🎯";
+}
+
+// Initialize done button state
+function initializeDoneButton() {
+  const button = document.getElementById("doneButton");
+  if (!button) return;
+
+  const lastCompletionDate = localStorage.getItem("lastCompletionDate");
+  const today_str = new Date().toDateString();
+
+  if (lastCompletionDate === today_str) {
+    button.classList.add("disabled");
+    button.textContent = "Completed Today! 🎯";
+  } else {
+    button.classList.remove("disabled");
+    button.textContent = "Done for Today! 🎉";
+  }
+
+  button.addEventListener("click", handleDoneButtonClick);
+}
+
 // Call the function when the page loads
 document.addEventListener("DOMContentLoaded", function () {
   // Existing page load animation
@@ -125,4 +212,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Update footer year
   updateFooterYear();
+
+  // Initialize done button
+  initializeDoneButton();
 });

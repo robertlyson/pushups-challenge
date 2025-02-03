@@ -439,3 +439,33 @@ footer {
     margin: 1rem;
   }
 }
+
+.done-button {
+  background: linear-gradient(145deg, #4caf50, #45a049);
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: 1rem;
+}
+
+.done-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(145deg, #45a049, #3d8b40);
+}
+
+.done-button:active {
+  transform: translateY(0);
+}
+
+.done-button.disabled {
+  background: #ccc;
+  cursor: not-allowed;
+  transform: none;
+}
