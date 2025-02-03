@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Website</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul>
+          <li><a href="#home">Home</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section id="home">
+        <h1>Daily Push-up Challenge</h1>
+        <div class="push-up-display">
+          <div class="push-up-today">
+            <h2>Today's Push-ups:</h2>
+            <p id="pushUpCount" class="count">0</p>
+          </div>
+          <div class="push-up-total">
+            <h2>Total Push-ups This Year:</h2>
+            <p id="totalPushUps" class="count">0</p>
+          </div>
+          <div class="push-up-chart">
+            <h2>Push-ups Progress</h2>
+            <div class="month-labels">
+              <span>Jan</span>
+              <span>Feb</span>
+              <span>Mar</span>
+              <span>Apr</span>
+              <span>May</span>
+              <span>Jun</span>
+              <span>Jul</span>
+              <span>Aug</span>
+              <span>Sep</span>
+              <span>Oct</span>
+              <span>Nov</span>
+              <span>Dec</span>
+            </div>
+            <div style="position: relative">
+              <div class="day-labels">
+                <span class="day-label">Mon</span>
+                <span class="day-label">Wed</span>
+                <span class="day-label">Fri</span>
+              </div>
+              <div id="activityChart" class="activity-chart"></div>
+            </div>
+            <div class="chart-legend">
+              <span class="legend-item">Less</span>
+              <span class="legend-box l0"></span>
+              <span class="legend-box l1"></span>
+              <span class="legend-box l2"></span>
+              <span class="legend-box l3"></span>
+              <span class="legend-box l4"></span>
+              <span class="legend-item">More</span>
+            </div>
+          </div>
+          <p id="currentDate" class="date"></p>
+        </div>
+        <p>Stay consistent with your daily push-up challenge!</p>
+      </section>
+
+      <section id="info" class="info-section">
+        <h2>How It Works</h2>
+        <div class="info-content">
+          <p>This challenge follows a simple progressive overload principle:</p>
+          <ul>
+            <li>Day 1 of the year: Do 1 push-up</li>
+            <li>Day 2 of the year: Do 2 push-ups</li>
+            <li>Day 100 of the year: Do 100 push-ups</li>
+            <li>And so on...</li>
+          </ul>
+          <p>
+            The chart above shows your daily progress, with darker colors
+            representing more push-ups for that day.
+          </p>
+          <p>
+            By following this challenge, you'll gradually build strength and
+            endurance throughout the year.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; <span id="currentYear"></span></p>
+    </footer>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>
