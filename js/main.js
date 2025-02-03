@@ -62,7 +62,33 @@ function createActivityChart(days) {
   }
 }
 
-// Calculate push-ups based on day of the year
+// Add this function to calculate yearly totals
+function updateMotivationStats(currentDay) {
+  const daysInYear = 365;
+  const yearlyTotal = (daysInYear * (daysInYear + 1)) / 2;
+  const completedTotal = (currentDay * (currentDay + 1)) / 2;
+  const remaining = yearlyTotal - completedTotal;
+
+  // Format numbers with commas
+  const formatNumber = (num) => num.toLocaleString();
+
+  // Update the stats
+  const completedElement = document.getElementById("completedPushUps");
+  const yearlyElement = document.getElementById("yearlyTotal");
+  const remainingElement = document.getElementById("remainingPushUps");
+
+  if (completedElement) {
+    completedElement.textContent = formatNumber(completedTotal);
+  }
+  if (yearlyElement) {
+    yearlyElement.textContent = formatNumber(yearlyTotal);
+  }
+  if (remainingElement) {
+    remainingElement.textContent = formatNumber(remaining);
+  }
+}
+
+// Update the calculatePushUps function to include motivation stats
 function calculatePushUps() {
   const today = new Date();
   const startOfYear = new Date(today.getFullYear(), 0, 0);
@@ -101,6 +127,9 @@ function calculatePushUps() {
 
   // Create activity chart
   createActivityChart(dayOfYear);
+
+  // Update motivation stats
+  updateMotivationStats(dayOfYear);
 }
 
 // Calculate current year for footer

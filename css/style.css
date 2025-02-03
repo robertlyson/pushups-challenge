@@ -469,3 +469,41 @@ footer {
   cursor: not-allowed;
   transform: none;
 }
+
+.motivation-section {
+  background: linear-gradient(145deg, #ffffff, #f8fff9);
+  padding: 2rem;
+  border-radius: 12px;
+  margin-top: 2rem;
+  border-left: 4px solid #4caf50;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.motivation-section h3 {
+  color: #2d3748;
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+}
+
+.highlight {
+  font-weight: 700;
+  color: #2f855a;
+  font-size: 1.2rem;
+  padding: 0.2rem 0.5rem;
+  background-color: #f0fff4;
+  border-radius: 4px;
+  display: inline-block;
+  min-width: 3rem;
+  text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+  .motivation-section {
+    padding: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  .highlight {
+    font-size: 1.1rem;
+  }
+}
