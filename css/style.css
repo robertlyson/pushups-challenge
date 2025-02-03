@@ -2,19 +2,23 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  transition: all 0.2s ease;
 }
 
 body {
-  font-family: Arial, sans-serif;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
   line-height: 1.6;
+  background-color: #f8fafc;
+  color: #1a1a1a;
 }
 
 header {
-  background-color: #333;
-  padding: 1rem;
+  background-color: #1a1a1a;
+  padding: 1.2rem;
   position: fixed;
   width: 100%;
   top: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 nav ul {
@@ -28,12 +32,17 @@ nav ul li {
 }
 
 nav ul li a {
-  color: white;
+  color: #fff;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
   text-decoration: none;
+  transition: all 0.2s ease;
 }
 
 nav ul li a:hover {
-  color: #ddd;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #fff;
 }
 
 main {
@@ -46,8 +55,21 @@ section {
   padding: 2rem 0;
 }
 
-h1,
+h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  text-align: center;
+  margin-bottom: 2rem;
+  background: linear-gradient(120deg, #1a1a1a, #4caf50);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 h2 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #2d3748;
   margin-bottom: 1rem;
 }
 
@@ -77,50 +99,61 @@ button:hover {
 }
 
 footer {
-  background-color: #333;
-  color: white;
+  background-color: #1a1a1a;
+  color: #ffffff;
   text-align: center;
-  padding: 1rem;
+  padding: 1.2rem;
   position: fixed;
   bottom: 0;
   width: 100%;
+  font-weight: 500;
 }
 
 .push-up-display {
-  background-color: #f5f5f5;
-  padding: 1rem;
-  border-radius: 8px;
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
   text-align: center;
-  margin: 1rem 0;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  max-width: 100%;
+  margin: 1rem auto;
+  gap: 2rem;
+  max-width: 1200px;
   overflow-x: auto;
 }
 
 .push-up-today,
 .push-up-total {
-  padding: 1rem;
-  border-radius: 6px;
-  background-color: white;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  border-radius: 12px;
+  background: linear-gradient(145deg, #ffffff, #f5f5f5);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.03);
+  transition: transform 0.2s ease;
+}
+
+.push-up-today:hover,
+.push-up-total:hover {
+  transform: translateY(-2px);
 }
 
 .push-up-total {
-  border-top: 3px solid #4caf50;
+  border-top: 4px solid #4caf50;
+  background: linear-gradient(145deg, #ffffff, #f8fff9);
 }
 
 .count {
-  font-size: 3.5rem;
-  font-weight: bold;
-  color: #333;
-  margin: 1rem 0;
+  font-size: 4rem;
+  font-weight: 700;
+  background: linear-gradient(120deg, #2d3748, #4a5568);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 0.5rem 0;
 }
 
 .push-up-total .count {
-  color: #4caf50;
+  background: linear-gradient(120deg, #2f855a, #4caf50);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .date {
@@ -129,12 +162,13 @@ footer {
 }
 
 .push-up-chart {
-  padding: 1rem;
-  border-radius: 6px;
-  background-color: white;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  border-radius: 12px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
+  margin: 0 auto;
 }
 
 .activity-chart {
@@ -143,17 +177,24 @@ footer {
   grid-template-rows: repeat(7, 15px);
   gap: 3px;
   padding: 1rem 1rem 0.5rem;
-  justify-content: start;
+  justify-content: center;
   min-width: 840px;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
 .chart-day {
   width: 15px;
   height: 15px;
-  border-radius: 2px;
-  transition: all 0.2s ease;
+  border-radius: 3px;
+  transition: all 0.3s ease;
   cursor: pointer;
   background-color: #ebedf0;
+}
+
+.chart-day:hover {
+  transform: scale(1.2);
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
 }
 
 .day-labels {
@@ -179,6 +220,8 @@ footer {
   font-size: 0.8rem;
   color: #666;
   min-width: 840px;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
 .month-labels span {
@@ -303,31 +346,36 @@ footer {
 }
 
 .info-section {
-  max-width: 800px;
-  margin: 2rem auto;
-  padding: 1rem;
-  background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  margin: 3rem auto;
 }
 
 .info-content {
-  margin-top: 1rem;
+  margin-top: 1.5rem;
 }
 
 .info-content ul {
+  background-color: #f8fafc;
+  padding: 1.5rem 2rem;
+  border-radius: 12px;
+  border-left: 4px solid #4caf50;
   list-style-position: inside;
   margin: 1rem 0;
 }
 
 .info-content li {
-  margin: 0.5rem 0;
-  color: #444;
+  color: #4a5568;
+  font-weight: 500;
+  padding: 0.5rem 0;
 }
 
 .info-content p {
-  color: #666;
-  line-height: 1.6;
+  color: #4a5568;
+  line-height: 1.8;
+  margin: 1.5rem 0;
 }
 
 @media screen and (max-width: 768px) {
@@ -337,5 +385,57 @@ footer {
 
   .info-content li {
     margin: 0.3rem 0;
+  }
+}
+
+/* Add custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #666;
+}
+
+/* Add container for push-up stats */
+.push-up-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+  max-width: 1000px;
+  margin: 0 auto 2rem;
+}
+
+/* Update media queries */
+@media screen and (min-width: 1400px) {
+  .push-up-display {
+    padding: 3rem;
+  }
+
+  .activity-chart {
+    gap: 4px;
+  }
+
+  .chart-day {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .push-up-display {
+    margin: 1rem;
   }
 }
