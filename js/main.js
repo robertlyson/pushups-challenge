@@ -49,16 +49,32 @@ function createActivityChart(days) {
     });
 
     box.title = `${formattedDate}: ${day} push-ups`;
+
+    // Calculate position in the grid
+    const weekNumber = Math.floor((day + startDay - 1) / 7);
+    const dayOfWeek = (day + startDay - 1) % 7;
+
+    // Set the grid position
+    box.style.gridColumn = weekNumber + 1;
+    box.style.gridRow = dayOfWeek + 1;
+
     chartContainer.appendChild(box);
   }
 
   // Fill remaining boxes for the year
-  const totalCells = 53 * 7; // 53 weeks * 7 days
-  const remainingCells = totalCells - (days + startDay);
-  for (let i = 0; i < remainingCells; i++) {
-    const futureBox = document.createElement("div");
-    futureBox.className = "chart-day l0";
-    chartContainer.appendChild(futureBox);
+  const totalWeeks = 53;
+  const lastDay = days + startDay;
+  const lastWeek = Math.floor(lastDay / 7);
+  const remainingWeeks = totalWeeks - lastWeek;
+
+  for (let week = lastWeek; week < totalWeeks; week++) {
+    for (let day = 0; day < 7; day++) {
+      const futureBox = document.createElement("div");
+      futureBox.className = "chart-day l0";
+      futureBox.style.gridColumn = week + 1;
+      futureBox.style.gridRow = day + 1;
+      chartContainer.appendChild(futureBox);
+    }
   }
 }
 

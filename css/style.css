@@ -167,23 +167,22 @@ footer {
   border-radius: 12px;
   background-color: #ffffff;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  margin: 0 auto;
   position: relative;
-  z-index: 1;
+}
+
+.chart-wrapper {
+  position: relative;
+  padding-left: 30px; /* Space for labels */
 }
 
 .activity-chart {
   display: grid;
-  grid-template-columns: repeat(53, 15px);
   grid-template-rows: repeat(7, 15px);
+  grid-template-columns: repeat(53, 15px);
   gap: 3px;
   padding: 1rem 1rem 0.5rem;
-  justify-content: center;
   min-width: 840px;
-  max-width: 1000px;
-  margin: 0 auto;
+  grid-auto-flow: column;
 }
 
 .chart-day {
@@ -195,41 +194,40 @@ footer {
   background-color: #ebedf0;
 }
 
-.chart-day:hover {
-  transform: scale(1.2);
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
-}
-
 .day-labels {
   position: absolute;
-  display: grid;
-  grid-template-rows: repeat(7, 15px);
+  left: 0;
+  top: 16px; /* Align with grid */
+  display: flex;
+  flex-direction: column;
   gap: 3px;
-  margin-top: 1rem;
-  margin-left: -25px;
+  height: calc(100% - 32px);
+  justify-content: space-between;
 }
 
 .day-label {
-  font-size: 0.7rem;
-  color: #666;
+  font-size: 0.75rem;
+  color: #484f58;
   height: 15px;
   line-height: 15px;
+  font-weight: 500;
 }
 
 .month-labels {
   display: flex;
   padding: 0 1rem;
   margin-bottom: 0.5rem;
-  font-size: 0.8rem;
-  color: #666;
+  font-size: 0.75rem;
+  color: #484f58;
   min-width: 840px;
   max-width: 1000px;
   margin: 0 auto;
+  font-weight: 500;
 }
 
 .month-labels span {
   flex: 1;
-  text-align: center;
+  text-align: start;
 }
 
 .chart-legend {
@@ -274,6 +272,7 @@ footer {
 
   .push-up-display {
     padding: 0.5rem;
+    margin: 0;
   }
 
   .push-up-today,
@@ -285,24 +284,48 @@ footer {
     font-size: 2.5rem;
   }
 
-  .day-labels {
-    margin-left: -20px;
+  .chart-wrapper {
+    padding-left: 25px;
+    overflow-x: auto;
+  }
+
+  .activity-chart {
+    min-width: 700px;
+    gap: 2px;
   }
 
   .day-label {
-    font-size: 0.6rem;
+    font-size: 0.65rem;
+  }
+
+  .push-up-chart {
+    padding: 1rem;
+    margin: 0 -0.5rem;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .month-labels {
+    min-width: 700px;
+    font-size: 0.65rem;
+    padding: 0 1rem;
   }
 
   .push-up-chart::after {
-    content: "← Scroll →";
+    content: "← Scroll to see more →";
     display: block;
     text-align: center;
-    color: #666;
-    font-size: 0.8rem;
+    color: #484f58;
+    font-size: 0.7rem;
     padding: 0.5rem;
-    background-color: #f5f5f5;
-    margin-top: 0.5rem;
-    border-radius: 4px;
+    background-color: #f8fafc;
+    margin: 0.5rem -1rem -1rem;
+    border-top: 1px solid #ebedf0;
+  }
+
+  .push-up-stats {
+    gap: 1rem;
+    margin-bottom: 1rem;
   }
 }
 
@@ -326,6 +349,26 @@ footer {
   .chart-legend {
     flex-wrap: wrap;
     justify-content: center;
+  }
+
+  .activity-chart {
+    min-width: 600px;
+    gap: 2px;
+  }
+
+  .month-labels {
+    min-width: 600px;
+  }
+
+  .chart-day {
+    width: 10px;
+    height: 10px;
+  }
+
+  .day-label {
+    font-size: 0.6rem;
+    height: 10px;
+    line-height: 10px;
   }
 }
 
