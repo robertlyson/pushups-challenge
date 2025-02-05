@@ -23,7 +23,9 @@ function createActivityChart(days) {
   chartContainer.innerHTML = "";
 
   const startDate = new Date(new Date().getFullYear(), 0, 1);
-  const startDay = startDate.getDay(); // 0 = Sunday, 1 = Monday, etc.
+  // Adjust startDay to handle Monday as first day (0 = Monday, 6 = Sunday)
+  let startDay = startDate.getDay();
+  startDay = startDay === 0 ? 6 : startDay - 1; // Convert Sunday (0) to 6, and shift others back by 1
 
   // Create empty boxes for days before January 1st
   for (let i = 0; i < startDay; i++) {
@@ -32,49 +34,44 @@ function createActivityChart(days) {
     chartContainer.appendChild(emptyBox);
   }
 
-  // Create boxes for each day up to current day
-  for (let day = 1; day <= days; day++) {
+  // Calculate total cells needed (52 weeks × 7 days)
+  const totalCells = 52 * 7;
+
+  // Create boxes for each cell
+  for (let i = 0; i < totalCells; i++) {
+    const dayNumber = i - startDay + 1; // Adjust for start day offset
     const box = document.createElement("div");
-    box.className = `chart-day l${getActivityLevel(day)}`;
 
-    // Calculate the date for this box
-    const date = new Date(startDate);
-    date.setDate(date.getDate() + day - 1);
-
-    // Format the date for the tooltip
-    const formattedDate = date.toLocaleDateString("en-US", {
-      month: "short",
-      day: "numeric",
-      year: "numeric",
-    });
-
-    box.title = `${formattedDate}: ${day} push-ups`;
-
-    // Calculate position in the grid
-    const weekNumber = Math.floor((day + startDay - 1) / 7);
-    const dayOfWeek = (day + startDay - 1) % 7;
+    // Calculate position in the grid (adjusted for Monday start)
+    const weekNumber = Math.floor(i / 7);
+    const dayOfWeek = i % 7;
 
     // Set the grid position
-    box.style.gridColumn = weekNumber + 1;
-    box.style.gridRow = dayOfWeek + 1;
+    box.style.gridArea = `${dayOfWeek + 1} / ${weekNumber + 1}`;
+
+    // If this is a past/current day within our range
+    if (dayNumber > 0 && dayNumber <= days) {
+      const level = getActivityLevel(dayNumber);
+      box.className = `chart-day l${level}`;
+
+      // Calculate the date for this box
+      const date = new Date(startDate);
+      date.setDate(date.getDate() + dayNumber - 1);
+
+      // Format the date for the tooltip
+      const formattedDate = date.toLocaleDateString("en-US", {
+        month: "short",
+        day: "numeric",
+        year: "numeric",
+      });
+
+      box.title = `${formattedDate}: ${dayNumber} push-ups`;
+    } else {
+      // Empty cell
+      box.className = "chart-day l0";
+    }
 
     chartContainer.appendChild(box);
-  }
-
-  // Fill remaining boxes for the year
-  const totalWeeks = 53;
-  const lastDay = days + startDay;
-  const lastWeek = Math.floor(lastDay / 7);
-  const remainingWeeks = totalWeeks - lastWeek;
-
-  for (let week = lastWeek; week < totalWeeks; week++) {
-    for (let day = 0; day < 7; day++) {
-      const futureBox = document.createElement("div");
-      futureBox.className = "chart-day l0";
-      futureBox.style.gridColumn = week + 1;
-      futureBox.style.gridRow = day + 1;
-      chartContainer.appendChild(futureBox);
-    }
   }
 }
 
