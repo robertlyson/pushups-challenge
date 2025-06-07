@@ -173,15 +173,21 @@ footer {
 .chart-wrapper {
   position: relative;
   padding-left: 30px; /* Space for labels */
+  overflow-x: auto;
+}
+
+.chart-content {
+  display: flex;
+  flex-direction: column;
+  min-width: 800px;
 }
 
 .activity-chart {
   display: grid;
   grid-template-rows: repeat(7, 15px);
-  grid-template-columns: repeat(53, 15px);
+  grid-template-columns: repeat(52, 15px);
   gap: 3px;
   padding: 1rem 1rem 0.5rem;
-  min-width: 840px;
   grid-auto-flow: column;
 }
 
@@ -214,21 +220,33 @@ footer {
 }
 
 .month-labels {
-  display: flex;
-  padding: 0 1rem;
+  display: grid;
+  grid-template-columns: repeat(52, 15px);
+  gap: 3px;
+  padding: 1rem 1rem 0.5rem;
   margin-bottom: 0.5rem;
   font-size: 0.75rem;
   color: #484f58;
-  min-width: 840px;
-  max-width: 1000px;
-  margin: 0 auto;
   font-weight: 500;
 }
 
 .month-labels span {
-  flex: 1;
-  text-align: start;
+  text-align: center;
+  grid-column: span 4;
 }
+
+.month-labels span:nth-child(1) { grid-column: 1 / 5; }
+.month-labels span:nth-child(2) { grid-column: 5 / 9; }
+.month-labels span:nth-child(3) { grid-column: 9 / 13; }
+.month-labels span:nth-child(4) { grid-column: 13 / 18; }
+.month-labels span:nth-child(5) { grid-column: 18 / 22; }
+.month-labels span:nth-child(6) { grid-column: 22 / 27; }
+.month-labels span:nth-child(7) { grid-column: 27 / 31; }
+.month-labels span:nth-child(8) { grid-column: 31 / 35; }
+.month-labels span:nth-child(9) { grid-column: 35 / 40; }
+.month-labels span:nth-child(10) { grid-column: 40 / 44; }
+.month-labels span:nth-child(11) { grid-column: 44 / 48; }
+.month-labels span:nth-child(12) { grid-column: 48 / 53; }
 
 .chart-legend {
   display: flex;
@@ -286,11 +304,13 @@ footer {
 
   .chart-wrapper {
     padding-left: 25px;
-    overflow-x: auto;
+  }
+
+  .chart-content {
+    min-width: 660px;
   }
 
   .activity-chart {
-    min-width: 700px;
     gap: 2px;
   }
 
@@ -306,7 +326,6 @@ footer {
   }
 
   .month-labels {
-    min-width: 700px;
     font-size: 0.65rem;
     padding: 0 1rem;
   }
@@ -351,13 +370,12 @@ footer {
     justify-content: center;
   }
 
-  .activity-chart {
-    min-width: 600px;
-    gap: 2px;
+  .chart-content {
+    min-width: 560px;
   }
 
-  .month-labels {
-    min-width: 600px;
+  .activity-chart {
+    gap: 2px;
   }
 
   .chart-day {
