@@ -96,15 +96,29 @@
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
   </head>
   <body>
-    <header>
-      <nav>
-        <ul>
-          <li><a href="#home">Home</a></li>
-        </ul>
-      </nav>
-    </header>
 
-    <main>
+    <div class="app-layout">
+      <aside class="sidebar">
+        <div class="sidebar-header">
+          <div class="brand">Daily Push-up</div>
+        </div>
+        <nav class="sidebar-nav">
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#info">How It Works</a></li>
+          </ul>
+        </nav>
+        <div class="sidebar-footer">
+          <div class="user-profile">
+            <div class="avatar">DP</div>
+            <div class="user-details">
+              <div class="user-name">Guest</div>
+              <div class="user-meta">&copy; <span id="currentYear"></span></div>
+            </div>
+          </div>
+        </div>
+      </aside>
+      <main>
       <article id="home">
         <h1>Daily Push-up Challenge</h1>
         <div class="push-up-display">
@@ -206,10 +220,8 @@
         </div>
       </article>
     </main>
+    </div>
 
-    <footer>
-      <p>&copy; <span id="currentYear"></span></p>
-    </footer>
 
     <script src="js/main.js"></script>
   </body>

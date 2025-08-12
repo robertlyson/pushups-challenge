@@ -1,8 +1,11 @@
 // Smooth scrolling for navigation links
-document.querySelectorAll("nav a").forEach((anchor) => {
+document.querySelectorAll("a[href^='#']").forEach((anchor) => {
   anchor.addEventListener("click", function (e) {
+    const href = this.getAttribute("href");
+    if (!href || href === "#") return;
+    const section = document.querySelector(href);
+    if (!section) return;
     e.preventDefault();
-    const section = document.querySelector(this.getAttribute("href"));
     section.scrollIntoView({ behavior: "smooth" });
   });
 });
